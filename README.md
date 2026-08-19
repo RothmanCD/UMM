@@ -6,7 +6,9 @@ Manuscript draft v23 and the frozen SPARC residual products that support it.
 
 **PDF:** [`paper/UMM_Paper_Draft_v23.pdf`](paper/UMM_Paper_Draft_v23.pdf)
 
-This public repository is the supplementary data location named in the manuscript. A permanent archive identifier (for example a Zenodo DOI) can be added at journal or arXiv submission.
+This public repository is the supplementary data and code location named in the manuscript.
+
+**Zenodo preprint:** [https://doi.org/10.5281/zenodo.22013917](https://doi.org/10.5281/zenodo.22013917)
 
 ## Abstract
 
@@ -35,7 +37,8 @@ These numbers are measured catalog products of `analysis/sparc_residuals/`. They
 |------|----------|
 | `paper/UMM_Paper_Draft_v23.tex` | Current manuscript source |
 | `paper/UMM_Paper_Draft_v23.pdf` | Compiled PDF |
-| `paper/UMM_Paper_Draft_v22.tex` | Previous snapshot (v22) |
+| `supplement/UMM_Residual_Geometry_Layer.md` | Companion Residual-Geometry Layer note (pure mathematical interface) |
+| `supplement/UMM_Residual_Geometry_Layer_Additive_Note_2026-08-11.md` | Additive domain-extension note (2026-08-11) |
 | `figures/` | Figure TeX, PDF, PNG, and `umm_style.tex` |
 | `Data/SPARC/` | Public SPARC parent catalog (third-party; see that README) |
 | `analysis/sparc_residuals/` | Residual pipeline and frozen N=88 products |
@@ -61,6 +64,13 @@ cd figures
 ```
 
 Fig. 7 (`fig7_residual_ratio_conversion`) is shipped as PDF/PNG only.
+
+## Residual-Geometry Layer (supplement)
+
+v23 isolates the pure mathematical construction in a companion note so it can be read independently of the galactic phenomenology. The frozen interface and the 2026-08-11 additive paragraph (residual-geometry-constrained conversion for pressure-supported systems) are:
+
+- [`supplement/UMM_Residual_Geometry_Layer.md`](supplement/UMM_Residual_Geometry_Layer.md)
+- [`supplement/UMM_Residual_Geometry_Layer_Additive_Note_2026-08-11.md`](supplement/UMM_Residual_Geometry_Layer_Additive_Note_2026-08-11.md)
 
 ## Reproduce the SPARC residual table
 
@@ -98,12 +108,14 @@ This repository does not claim ownership of the SPARC catalog. Details: [`Data/S
 ## License
 
 - Analysis code and tests: MIT (see `LICENSE`).
-- Manuscript and figures: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+- Manuscript, figures, and `supplement/` notes: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 - SPARC catalog files: third-party; see `Data/SPARC/README.md`.
 
 ## Citation
 
-See `CITATION.cff`. Until a journal or arXiv version exists, cite this repository and manuscript draft v23.
+Rothman, C. (2026). *Residual Geometric Charges and a Continuous Density-Dependent Contribution to Gravity from a Single Compact Manifold* (v23). Zenodo. https://doi.org/10.5281/zenodo.22013917
+
+See also `CITATION.cff`.
 
 ## AI assistance
 

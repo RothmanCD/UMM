@@ -8,7 +8,12 @@ authors:
 version: "v23"
 date-released: "2026-08-19"
 license: MIT
+doi: 10.5281/zenodo.22013917
 repository-code: "https://github.com/RothmanCD/UMM"
+url: "https://doi.org/10.5281/zenodo.22013917"
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22013917
 keywords:
   - Universal Manifold Model
   - residual geometric charges
