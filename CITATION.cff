@@ -5,8 +5,8 @@ type: software
 authors:
   - family-names: Rothman
     given-names: Carl
-version: "v22"
-date-released: "2026-08-11"
+version: "v23"
+date-released: "2026-08-19"
 license: MIT
 repository-code: "https://github.com/RothmanCD/UMM"
 keywords:
@@ -20,5 +20,5 @@ abstract: >-
   operators of the algebraic type associated with spin and a continuous,
   density-dependent contribution to gravitational acceleration arise as
   projections of independent relational flux on a continuous compact manifold.
-  This repository holds manuscript draft v22 and the frozen SPARC N=88
+  This repository holds manuscript draft v23 and the frozen SPARC N=88
   residual products (selection_id ea6c92761ffd3c5a).

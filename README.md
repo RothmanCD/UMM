@@ -1,10 +1,10 @@
 # Universal Manifold Model (UMM)
 
-Manuscript draft v22 and the frozen SPARC residual products that support it.
+Manuscript draft v23 and the frozen SPARC residual products that support it.
 
-**Paper:** Carl Rothman, *Residual Geometric Charges and a Continuous Density-Dependent Contribution to Gravity from a Single Compact Manifold* (draft v22, 11 August 2026).
+**Paper:** Carl Rothman, *Residual Geometric Charges and a Continuous Density-Dependent Contribution to Gravity from a Single Compact Manifold* (draft v23, 19 August 2026).
 
-**PDF:** [`paper/UMM_Paper_Draft_v22.pdf`](paper/UMM_Paper_Draft_v22.pdf)
+**PDF:** [`paper/UMM_Paper_Draft_v23.pdf`](paper/UMM_Paper_Draft_v23.pdf)
 
 This public repository is the supplementary data location named in the manuscript. A permanent archive identifier (for example a Zenodo DOI) can be added at journal or arXiv submission.
 
@@ -33,8 +33,9 @@ These numbers are measured catalog products of `analysis/sparc_residuals/`. They
 
 | Path | Contents |
 |------|----------|
-| `paper/UMM_Paper_Draft_v22.tex` | Current manuscript source |
-| `paper/UMM_Paper_Draft_v22.pdf` | Compiled PDF |
+| `paper/UMM_Paper_Draft_v23.tex` | Current manuscript source |
+| `paper/UMM_Paper_Draft_v23.pdf` | Compiled PDF |
+| `paper/UMM_Paper_Draft_v22.tex` | Previous snapshot (v22) |
 | `figures/` | Figure TeX, PDF, PNG, and `umm_style.tex` |
 | `Data/SPARC/` | Public SPARC parent catalog (third-party; see that README) |
 | `analysis/sparc_residuals/` | Residual pipeline and frozen N=88 products |
@@ -48,8 +49,8 @@ Figures are loaded with `\graphicspath{{./}{../figures/}}`.
 
 ```bash
 cd paper
-pdflatex -interaction=nonstopmode UMM_Paper_Draft_v22.tex
-pdflatex -interaction=nonstopmode UMM_Paper_Draft_v22.tex
+pdflatex -interaction=nonstopmode UMM_Paper_Draft_v23.tex
+pdflatex -interaction=nonstopmode UMM_Paper_Draft_v23.tex
 ```
 
 To rebuild figures from TikZ sources:
@@ -102,7 +103,7 @@ This repository does not claim ownership of the SPARC catalog. Details: [`Data/S
 
 ## Citation
 
-See `CITATION.cff`. Until a journal or arXiv version exists, cite this repository and manuscript draft v22.
+See `CITATION.cff`. Until a journal or arXiv version exists, cite this repository and manuscript draft v23.
 
 ## AI assistance
 
