@@ -7,8 +7,6 @@
 **Scope**  
 This document is a self-contained pure-mathematical exposition of the Residuum Projection Hypothesis. All statements are formulated in the language of C*-algebras, von Neumann algebras, modular theory, and continuous fields of algebras. Cosmological or physical readings are excluded by deliberate design. The practical frame of the broader project—application of the resulting geometric calculus to high-dimensional embedding and latent spaces—is noted only in the concluding remarks and does not affect the formal development.
 
-American English spellings are used throughout.
-
 ---
 
 ## Abstract
@@ -171,6 +169,4 @@ The construction realises the maximal canonicity currently attainable from the p
 
 The formal apparatus developed above treats the structures of quantum mechanics as a domain-general geometric calculus for high-dimensional continuous spaces. Its effectiveness does not depend on any claim about the ultimate ontology of the physical universe. Modern embedding spaces and latent spaces of large language models supply a practical computational arena in which residual projection, residual spectrum, packing-dependent amplitude, and modular arrows can be realized at scale and subjected to external verification. The Residuum Geometry Project therefore pursues two tightly coupled goals: completion of the pure-mathematical formalization, and demonstration that the resulting calculus is operationally useful for organizing high-dimensional representations of mathematical and physical knowledge.
 
----
 
-*End of draft. This text is intended as a self-contained pure-mathematical paper. All progress recorded in the project’s sequential notes has been integrated into a single narrative flow. Physical or cosmological readings remain outside scope.*
