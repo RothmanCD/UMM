@@ -1,0 +1,30 @@
+{
+  "analysis": "udg_confrontation",
+  "frozen_A": 1.41e-11,
+  "frozen_A_unc": 7e-13,
+  "n_g": 0.4,
+  "Sigma_ref": 1.0,
+  "alpha_eff": 1.8,
+  "Sigma_mid_window": [
+    0.3,
+    1.0,
+    3.0
+  ],
+  "selection_id_sparc": "ea6c92761ffd3c5a",
+  "n_systems": 4,
+  "system_names": [
+    "NGC1052-DF2",
+    "NGC1052-DF4",
+    "NGC1052-DF9",
+    "FCC224"
+  ],
+  "classification": "ruled out",
+  "no_refit": true,
+  "outputs": [
+    "literature_manifest.json",
+    "udg_data_table.csv",
+    "udg_predictions_three_models.csv",
+    "residual_summary.json",
+    "confrontation_report.md"
+  ]
+}

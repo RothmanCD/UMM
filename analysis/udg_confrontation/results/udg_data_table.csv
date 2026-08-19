@@ -1,0 +1,5 @@
+name,D_Mpc,D_unc,M_star,M_star_unc,R_e_kpc,Sigma_bar_mean,sigma_obs,sigma_obs_unc_plus,sigma_obs_unc_minus,sigma_obs_unc_max,tracer,distance_citation,sigma_citation
+NGC1052-DF2,20.0,1.7,2.000e+08,4.000e+07,2.20,6.577,8.50,2.30,3.10,3.10,stars (KCWI integrated light),"van Dokkum et al. 2018, Nature, 555, 629 (arXiv:1803.10237)","Danieli et al. 2019, ApJL, 874, L12 (arXiv:1901.03711)"
+NGC1052-DF4,20.0,1.6,1.500e+08,4.000e+07,1.60,9.325,8.00,2.30,1.90,2.30,stars (KCWI integrated light),"van Dokkum et al. 2019, ApJL, 874, L5 (SBF 19.9±2.8); Danieli et al. 2020 TRGB ≈20.0","Shen et al. 2023, ApJ, 958, 3 (arXiv:2309.08592)"
+NGC1052-DF9,20.6,2.0,1.400e+08,3.000e+07,1.10,18.415,6.40,4.00,4.30,4.30,stars (KCWI; broadening- and binary-corrected),"Keim et al. 2026, ApJ (arXiv:2603.15860); trail scale Keim et al. 2025","Keim et al. 2026, ApJ (arXiv:2603.15860)"
+FCC224,20.0,1.5,1.740e+08,1.600e+07,1.89,7.753,7.82,6.74,4.36,6.74,stars (KCWI red-arm CaT; broadening-corrected),"Buzzo et al. 2025, A&A (arXiv:2502.05405); Tang et al. 2025a photometry at 20 Mpc","Buzzo et al. 2025, A&A (arXiv:2502.05405)"

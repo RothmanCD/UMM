@@ -1,0 +1,7 @@
+# The SPARC residual pipeline and UDG confrontation code use the Python
+# standard library only (3.10+). No third-party packages are required
+# to regenerate analysis/sparc_residuals/results/.
+#
+# The local research environment (.venv, not shipped) additionally
+# contains numpy, scipy, matplotlib, and related scientific libraries
+# used by later exploratory branches that are not part of this snapshot.

@@ -1,0 +1,72 @@
+{
+  "N": 4,
+  "stars_alone": {
+    "median_eps_sigma": -0.1064648246863547,
+    "median_abs_eps_sigma": 0.14505348432292559,
+    "mean_eps_sigma": -0.02449568758550532,
+    "n_within_1sigma": 4,
+    "n_within_2sigma": 4,
+    "n_total": 4,
+    "fraction_within_1sigma": 1.0,
+    "fraction_within_2sigma": 1.0,
+    "eps_list": [
+      -0.1775302845450686,
+      -0.11257668410078259,
+      0.2924771835757567,
+      -0.1003529652719268
+    ],
+    "n_sigma_list": [
+      0.47485146718539606,
+      0.3621034621873986,
+      0.4263531005049621,
+      0.11629941274683377
+    ]
+  },
+  "powerlaw_umm": {
+    "median_eps_sigma": 1.8407672030071922,
+    "median_abs_eps_sigma": 1.8407672030071922,
+    "mean_eps_sigma": 1.9323997519289295,
+    "n_within_1sigma": 0,
+    "n_within_2sigma": 0,
+    "n_total": 4,
+    "fraction_within_1sigma": 0.0,
+    "fraction_within_2sigma": 0.0,
+    "eps_list": [
+      1.777045133918179,
+      1.7257689649698351,
+      2.3222956367314995,
+      1.9044892720962054
+    ],
+    "n_sigma_list": [
+      4.801681695105383,
+      5.874068658784804,
+      3.4378387915880326,
+      2.203368046792511
+    ]
+  },
+  "logistic_umm": {
+    "median_eps_sigma": 1.5381840903234527,
+    "median_abs_eps_sigma": 1.5381840903234527,
+    "mean_eps_sigma": 1.5267443464340502,
+    "n_within_1sigma": 0,
+    "n_within_2sigma": 1,
+    "n_total": 4,
+    "fraction_within_1sigma": 0.0,
+    "fraction_within_2sigma": 0.25,
+    "eps_list": [
+      1.504625577130752,
+      1.362865271520071,
+      1.6677439335692252,
+      1.5717426035161535
+    ],
+    "n_sigma_list": [
+      4.078684420138082,
+      4.669254416629506,
+      2.4751926760722944,
+      1.8197540130347956
+    ]
+  },
+  "classification": "ruled out",
+  "classification_note": "For every system in this small sample, the frozen intermediate-regime UMM power-law predicts a line-of-sight dispersion more than 2\u03c3 above the observed value (model systematically high). The pure-baryon column is consistent with the data within uncertainties. This is an illustrative first estimate on a small sample; systematics remain significant, but the direction of the residual is uniform.",
+  "honesty": "Illustrative first estimate; small sample (N=4); systematics remain significant (distance, M/L, residual rotation, possible tides, mean-\u03a3 proxy for local \u03a3_bar, thin-disk specialization applied to pressure-supported systems)."
+}

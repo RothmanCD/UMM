@@ -1,0 +1,734 @@
+{
+  "frozen_umm": {
+    "A_m_s2": 1.41e-11,
+    "A_unc_m_s2": 7e-13,
+    "n_g": 0.4,
+    "Sigma_ref_msun_pc2": 1.0,
+    "Upsilon_star_sparc": 0.5,
+    "selection_id": "ea6c92761ffd3c5a",
+    "alpha_eff": 1.8,
+    "alpha_eff_band": [
+      1.66,
+      1.84
+    ],
+    "Sigma_mid_window_msun_pc2": [
+      0.3,
+      1.0,
+      3.0
+    ],
+    "sources": {
+      "A": "paper/UMM_Paper_Draft_v14.tex Sec. SPARC; analysis/sparc_residuals/results/",
+      "alpha_eff": "notes/UMM_Packing_Coefficient_Tightening.md; v14 packing \u00a7",
+      "Sigma_ref": "v14 galactic specialization, \u03a3_ref = 1 M_\u2299 pc^{-2}"
+    }
+  },
+  "estimator_assumptions": {
+    "mass_estimator": "Wolf et al. 2010",
+    "formula": "M_1/2 = 4 \u03c3_los^2 R_e / G",
+    "sigma_from_a": "\u03c3 = sqrt(a_tot R_e / 4) with a_tot = a_bar + a_ind",
+    "a_bar": "G (M_*/2) / R_e^2 (mass-follows-light half-mass)",
+    "Sigma_bar": "mean within R_e: M_*/(2 \u03c0 R_e^2); not a published profile",
+    "anisotropy": "Wolf estimator; weak anisotropy sensitivity near r_1/2",
+    "gas": "neglected (quiescent UDGs)",
+    "no_refit": "A, n_g, alpha_eff, xi_c window fixed; no optimization"
+  },
+  "systems_literature": [
+    {
+      "name": "NGC1052-DF2",
+      "short": "DF2",
+      "include_in_residuals": true,
+      "distance": {
+        "value": 20.0,
+        "unc": 1.7,
+        "unit": "Mpc",
+        "method": "SBF (homogeneous group scale)",
+        "citation": "van Dokkum et al. 2018, Nature, 555, 629 (arXiv:1803.10237)",
+        "notes": "SBF D=19.0\u00b11.7 Mpc; paper adopts \u224820 Mpc with NGC 1052. TRGB re-measurements exist (Danieli et al. 2020 \u224822 Mpc); we adopt the homogeneous 20 Mpc group scale and propagate \u00b11.7 Mpc. Shen et al. 2023 quote 21.7 Mpc in some comparisons."
+      },
+      "M_star": {
+        "value": 200000000.0,
+        "unc": 40000000.0,
+        "unit": "Msun",
+        "citation": "van Dokkum et al. 2018, Nature; M/L_V\u22482.0",
+        "notes": "M_stars \u2248 2\u00d710^8 M_\u2299 at D=20 Mpc; ~25% M/L systematic folded into unc."
+      },
+      "R_e": {
+        "value": 2.2,
+        "unc": 0.1,
+        "unit": "kpc",
+        "citation": "van Dokkum et al. 2018, Nature (R_e=22.6'' \u2192 2.2 kpc at 20 Mpc)",
+        "notes": "Major-axis half-light radius; S\u00e9rsic n=0.6. Scales \u221d D."
+      },
+      "sigma_obs": {
+        "value": 8.5,
+        "unc_plus": 2.3,
+        "unc_minus": 3.1,
+        "unit": "km/s",
+        "tracer": "stars (KCWI integrated light)",
+        "citation": "Danieli et al. 2019, ApJL, 874, L12 (arXiv:1901.03711)",
+        "notes": "Primary stellar \u03c3. GC-based values: van Dokkum et al. 2018 \u03c3_intr=3.2^{+5.5}_{-3.2} (90% UL 10.5); revised GC analyses exist. Keim et al. 2026 quote a broadening-corrected 6.1^{+3.7}_{-3.1} for cross-check; we retain Danieli 2019 as the published primary stellar measurement."
+      },
+      "sigma_baryon_lit": {
+        "value": 7.0,
+        "unc": 2.0,
+        "unit": "km/s",
+        "citation": "Danieli et al. 2019; van Dokkum et al. 2018 (stars alone ~7\u20138 km/s)",
+        "notes": "Literature pure-baryon expectation; we recompute via Wolf below."
+      },
+      "profile_limitation": "No published high-resolution mass surface-density profile used. Mean \u03a3 within R_e computed from M_* and R_e (mass-follows-light)."
+    },
+    {
+      "name": "NGC1052-DF4",
+      "short": "DF4",
+      "include_in_residuals": true,
+      "distance": {
+        "value": 20.0,
+        "unc": 1.6,
+        "unit": "Mpc",
+        "method": "SBF / TRGB (homogeneous group scale)",
+        "citation": "van Dokkum et al. 2019, ApJL, 874, L5 (SBF 19.9\u00b12.8); Danieli et al. 2020 TRGB \u224820.0",
+        "notes": "Adopt D=20 Mpc on the same group scale as DF2."
+      },
+      "M_star": {
+        "value": 150000000.0,
+        "unc": 40000000.0,
+        "unit": "Msun",
+        "citation": "van Dokkum et al. 2019, ApJL (M/L_V=2.0\u00b10.5; L_V=(7.7\u00b10.8)\u00d710^7 L_\u2299)",
+        "notes": "M_stars=(1.5\u00b10.4)\u00d710^8 M_\u2299 at D=20 Mpc."
+      },
+      "R_e": {
+        "value": 1.6,
+        "unc": 0.1,
+        "unit": "kpc",
+        "citation": "van Dokkum et al. 2019, ApJL (R_e=1.6 kpc; n=0.79)",
+        "notes": "Scales \u221d D. Shen et al. 2023 quote 16.5'' = 1.6 kpc."
+      },
+      "sigma_obs": {
+        "value": 8.0,
+        "unc_plus": 2.3,
+        "unc_minus": 1.9,
+        "unit": "km/s",
+        "tracer": "stars (KCWI integrated light)",
+        "citation": "Shen et al. 2023, ApJ, 958, 3 (arXiv:2309.08592)",
+        "notes": "Stellar \u03c3_stars=8.0^{+2.3}_{-1.9} km/s. Combined star+GC fiducial \u03c3_f=6.3^{+2.5}_{-1.6} km/s also reported; we use stellar as primary. GC-only van Dokkum et al. 2019: 4.2^{+4.4}_{-2.2} km/s."
+      },
+      "sigma_baryon_lit": {
+        "value": 7.0,
+        "unc": 1.0,
+        "unit": "km/s",
+        "citation": "Shen et al. 2023 (stars alone 7\u00b11 km/s)",
+        "notes": "Literature pure-baryon expectation."
+      },
+      "profile_limitation": "No published radial \u03a3 profile used; mean \u03a3 within R_e from M_* and R_e."
+    },
+    {
+      "name": "NGC1052-DF9",
+      "short": "DF9",
+      "include_in_residuals": true,
+      "distance": {
+        "value": 20.6,
+        "unc": 2.0,
+        "unit": "Mpc",
+        "method": "Trail-position distance (group kinematic trail)",
+        "citation": "Keim et al. 2026, ApJ (arXiv:2603.15860); trail scale Keim et al. 2025",
+        "notes": "Expected distance from position along the NGC 1052 trail. Results are weakly distance-dependent (\u03c3_baryon \u221d D^{1/2} scaling cancels in mass comparison at leading order; see Keim et al. App. B)."
+      },
+      "M_star": {
+        "value": 140000000.0,
+        "unc": 30000000.0,
+        "unit": "Msun",
+        "citation": "Keim et al. 2026 (from Gannon et al. 2023 photometry; M/L_g=2.2)",
+        "notes": "Total stellar mass 1.4\u00d710^8 M_\u2299; half-light stellar mass 0.71\u00b10.16\u00d710^8."
+      },
+      "R_e": {
+        "value": 1.1,
+        "unc": 0.1,
+        "unit": "kpc",
+        "citation": "Keim et al. 2026; Gannon et al. 2023 (11.1'' at 20.6 Mpc \u2192 1.1 kpc)",
+        "notes": "Circularized effective radius used with Wolf estimator."
+      },
+      "sigma_obs": {
+        "value": 6.4,
+        "unc_plus": 4.0,
+        "unc_minus": 4.3,
+        "unit": "km/s",
+        "tracer": "stars (KCWI; broadening- and binary-corrected)",
+        "citation": "Keim et al. 2026, ApJ (arXiv:2603.15860)",
+        "notes": "Gravitational \u03c3 after subtracting \u03c3_broadening=5.4\u00b12 and \u03c3_binaries=2.3\u00b10.6 from fit \u03c3_fit=8.7^{+3.4}_{-3.7}."
+      },
+      "sigma_baryon_lit": {
+        "value": 8.3,
+        "unc_plus": 0.9,
+        "unc_minus": 1.4,
+        "unit": "km/s",
+        "citation": "Keim et al. 2026 (Wolf from M_e,* alone)",
+        "notes": "Literature pure-baryon expectation from stellar mass within R_e."
+      },
+      "profile_limitation": "No published \u03a3 profile; mean \u03a3 within R_e from M_* and R_e."
+    },
+    {
+      "name": "FCC224",
+      "short": "FCC224",
+      "include_in_residuals": true,
+      "distance": {
+        "value": 20.0,
+        "unc": 1.5,
+        "unit": "Mpc",
+        "method": "Fornax cluster distance (SBF/PNLF scale)",
+        "citation": "Buzzo et al. 2025, A&A (arXiv:2502.05405); Tang et al. 2025a photometry at 20 Mpc",
+        "notes": "Fornax outskirts; systemic velocity 1405\u00b13 km/s consistent with cluster. GCLF and stellar mass quoted at 20 Mpc. Distance unc. ~typical Fornax ladder."
+      },
+      "M_star": {
+        "value": 174000000.0,
+        "unc": 16000000.0,
+        "unit": "Msun",
+        "citation": "Buzzo et al. 2025; Tang et al. 2025a: log(M_*/M_\u2299)=8.24\u00b10.04",
+        "notes": "10^{8.24}=1.74\u00d710^8 M_\u2299."
+      },
+      "R_e": {
+        "value": 1.89,
+        "unc": 0.05,
+        "unit": "kpc",
+        "citation": "Buzzo et al. 2025; Tang et al. 2025a: R_e=1.89\u00b10.01 kpc",
+        "notes": "UDG within uncertainties; \u03bc_g,0=23.97\u00b10.03; b/a=0.64; n=0.75."
+      },
+      "sigma_obs": {
+        "value": 7.82,
+        "unc_plus": 6.74,
+        "unc_minus": 4.36,
+        "unit": "km/s",
+        "tracer": "stars (KCWI red-arm CaT; broadening-corrected)",
+        "citation": "Buzzo et al. 2025, A&A (arXiv:2502.05405)",
+        "notes": "Published \u03c3_stars=7.82^{+6.74}_{-4.36} km/s after subtracting \u03c3_broadening=6.9\u00b12.6 from raw \u03c3_galaxy=10.43\u00b15.76 km/s (Buzzo et al. 2025 \u00a73.3.1). Asymmetric 1\u03c3 adopted as published; not a fabricated symmetric error. Galaxy is DM-deficient within 1 R_e per authors. Slow prolate rotation 7.5\u00b13.0 km/s reported (not subtracted here; see systematics)."
+      },
+      "sigma_baryon_lit": {
+        "value": 7.8,
+        "unc": 2.0,
+        "unit": "km/s",
+        "citation": "Buzzo et al. 2025 (stars-alone Jeans/SMHM comparison value)",
+        "notes": "Authors' stars-alone prediction 7.8\u00b12.0 km/s."
+      },
+      "profile_limitation": "No published full \u03a3 profile used; mean \u03a3 within R_e from M_* and R_e. KCWI FoV covers only ~0.4 R_e,circ for population gradients."
+    }
+  ],
+  "future_targets": [
+    {
+      "name": "NGC1052 trail members (excl. DF2/DF4/DF9)",
+      "reason": "Keim et al. 2025/2026: remaining trail galaxies up to ~100\u00d7 fainter; radial velocities partially available but internal kinematics not yet of KCWI/MUSE quality comparable to DF2/DF4/DF9.",
+      "citation": "van Dokkum et al. 2022a; Keim et al. 2025, 2026"
+    },
+    {
+      "name": "FCC240",
+      "reason": "Buzzo et al. 2026 (arXiv:2605.24099): close companion to FCC 224; analogue discussion; published kinematics of residual-sample quality not adopted here as primary.",
+      "citation": "Buzzo et al. 2026, ApJ (arXiv:2605.24099)"
+    },
+    {
+      "name": "Tidal-dwarf candidates (e.g. NGC 5291N, etc.)",
+      "reason": "Classic TDGs can be DM-poor but generally have rotation-supported HI kinematics and different formation channels; not included without a homogeneous pressure-supported \u03c3 of UDG quality.",
+      "citation": "Lelli et al. 2015; Bournaud et al. 2007 (context only)"
+    },
+    {
+      "name": "Almost-dark HI clouds / HI-bearing UDGs",
+      "reason": "Interesting for low-\u03a3 shoulder of \u03a6(\u03be) but require published stellar or GC dispersions of comparable quality; list as future targets only.",
+      "citation": "\u2014"
+    }
+  ],
+  "predictions": [
+    {
+      "name": "NGC1052-DF2",
+      "short": "DF2",
+      "D_Mpc": 20.0,
+      "D_unc_Mpc": 1.7,
+      "M_star": 200000000.0,
+      "M_star_unc": 40000000.0,
+      "R_e_kpc": 2.2,
+      "R_e_unc_kpc": 0.1,
+      "Sigma_bar_mean_msun_pc2": 6.576650540987411,
+      "sigma_obs": 8.5,
+      "sigma_obs_unc": 3.1,
+      "sigma_obs_unc_plus": 2.3,
+      "sigma_obs_unc_minus": 3.1,
+      "tracer": "stars (KCWI integrated light)",
+      "sigma_stars": 6.990992581366917,
+      "sigma_powerlaw": 23.60488363830452,
+      "sigma_logistic": 21.289317405611392,
+      "sigma_logistic_lo": 18.090176328528496,
+      "sigma_logistic_hi": 23.370717093667473,
+      "logistic_band": [
+        {
+          "Sigma_mid": 0.3,
+          "sigma_logistic": 18.090176328528496,
+          "a_ind_logistic": 506.1463678627737
+        },
+        {
+          "Sigma_mid": 1.0,
+          "sigma_logistic": 21.289317405611392,
+          "a_ind_logistic": 735.2019242257109
+        },
+        {
+          "Sigma_mid": 3.0,
+          "sigma_logistic": 23.370717093667473,
+          "a_ind_logistic": 904.2117094536611
+        }
+      ],
+      "a_bar": 88.8617768595041,
+      "a_ind_powerlaw": 924.2119169184895,
+      "a_ind_logistic": 735.2019242257109,
+      "m_half_star": 100000000.0,
+      "m_dyn_obs": 147829180.33625445,
+      "m_dyn_obs_unc": 107828343.30409148,
+      "m_dyn_stars": 100000000.00000001,
+      "m_dyn_powerlaw": 1140055634.2461226,
+      "m_dyn_logistic": 927354516.4284862,
+      "eps_sigma_stars": -0.1775302845450686,
+      "eps_sigma_powerlaw": 1.777045133918179,
+      "eps_sigma_logistic": 1.504625577130752,
+      "n_sigma_stars": 0.47485146718539606,
+      "n_sigma_powerlaw": 4.801681695105383,
+      "n_sigma_logistic": 4.078684420138082,
+      "model_unc_stars": 0.6990992581366917,
+      "model_unc_powerlaw": 0.5345413687410945,
+      "model_unc_logistic": 0.47147266602125953,
+      "systematics": {
+        "D_plus": {
+          "D_Mpc": 21.7,
+          "sigma_stars": 7.282050902109178,
+          "sigma_powerlaw": 24.58763361452292,
+          "sigma_logistic": 22.175662642243683,
+          "eps_powerlaw": 1.8926627781791672,
+          "note": "M_*\u221dD\u00b2, R_e\u221dD; \u03a3 invariant; \u03c3 scales ~D^{1/2} for fixed a"
+        },
+        "D_minus": {
+          "D_Mpc": 18.3,
+          "sigma_stars": 6.6872781611463905,
+          "sigma_powerlaw": 22.579400709358413,
+          "sigma_logistic": 20.364431187026426,
+          "eps_powerlaw": 1.656400083453931,
+          "note": "M_*\u221dD\u00b2, R_e\u221dD; \u03a3 invariant; \u03c3 scales ~D^{1/2} for fixed a"
+        },
+        "ML_plus": {
+          "M_star": 240000000.0,
+          "sigma_stars": 7.658248672331862,
+          "sigma_powerlaw": 24.605312110937483,
+          "sigma_logistic": 21.74232889547406,
+          "eps_powerlaw": 1.8947426012867628
+        },
+        "ML_minus": {
+          "M_star": 160000000.0,
+          "sigma_stars": 6.252933856853262,
+          "sigma_powerlaw": 22.45018125410732,
+          "sigma_logistic": 20.735875623989124,
+          "eps_powerlaw": 1.6411977946008613
+        },
+        "rotation_illustration": {
+          "V_rot_assumed_kms": 4.25,
+          "sigma_obs_corrected": 7.361215932167728,
+          "eps_powerlaw_vs_corrected": 2.206655511238802,
+          "note": "Illustrative only: assumes ordered motion ~0.5 \u03c3_obs mixed into reported dispersion. FCC 224 has published slow rotation; DF2/DF4 show little rotation in KCWI maps."
+        },
+        "tides_illustration": {
+          "sigma_obs_if_30pct_inflated": 6.538461538461538,
+          "eps_powerlaw": 2.6101586740936327,
+          "note": "Illustrative: if tides inflate line-of-sight motions by ~30%, compare models to \u03c3/1.3. Not a measurement."
+        }
+      },
+      "profile_limitation": "No published high-resolution mass surface-density profile used. Mean \u03a3 within R_e computed from M_* and R_e (mass-follows-light).",
+      "citations": {
+        "distance": "van Dokkum et al. 2018, Nature, 555, 629 (arXiv:1803.10237)",
+        "M_star": "van Dokkum et al. 2018, Nature; M/L_V\u22482.0",
+        "R_e": "van Dokkum et al. 2018, Nature (R_e=22.6'' \u2192 2.2 kpc at 20 Mpc)",
+        "sigma_obs": "Danieli et al. 2019, ApJL, 874, L12 (arXiv:1901.03711)"
+      }
+    },
+    {
+      "name": "NGC1052-DF4",
+      "short": "DF4",
+      "D_Mpc": 20.0,
+      "D_unc_Mpc": 1.6,
+      "M_star": 150000000.0,
+      "M_star_unc": 40000000.0,
+      "R_e_kpc": 1.6,
+      "R_e_unc_kpc": 0.1,
+      "Sigma_bar_mean_msun_pc2": 9.325484946790743,
+      "sigma_obs": 8.0,
+      "sigma_obs_unc": 2.3,
+      "sigma_obs_unc_plus": 2.3,
+      "sigma_obs_unc_minus": 1.9,
+      "tracer": "stars (KCWI integrated light)",
+      "sigma_stars": 7.099386527193739,
+      "sigma_powerlaw": 21.80615171975868,
+      "sigma_logistic": 18.90292217216057,
+      "sigma_logistic_lo": 16.0032625951083,
+      "sigma_logistic_hi": 21.153422587591958,
+      "logistic_band": [
+        {
+          "Sigma_mid": 0.3,
+          "sigma_logistic": 16.0032625951083,
+          "a_ind_logistic": 514.2578115637311
+        },
+        {
+          "Sigma_mid": 1.0,
+          "sigma_logistic": 18.90292217216057,
+          "a_ind_logistic": 767.297943960649
+        },
+        {
+          "Sigma_mid": 3.0,
+          "sigma_logistic": 21.153422587591958,
+          "a_ind_logistic": 992.664995266864
+        }
+      ],
+      "a_bar": 126.00322265624996,
+      "a_ind_powerlaw": 1062.7674094065862,
+      "a_ind_logistic": 767.297943960649,
+      "m_half_star": 75000000.0,
+      "m_dyn_obs": 95235659.43021362,
+      "m_dyn_obs_unc": 54760504.172372825,
+      "m_dyn_stars": 74999999.99999999,
+      "m_dyn_powerlaw": 707583469.0986003,
+      "m_dyn_logistic": 531713285.453372,
+      "eps_sigma_stars": -0.11257668410078259,
+      "eps_sigma_powerlaw": 1.7257689649698351,
+      "eps_sigma_logistic": 1.362865271520071,
+      "n_sigma_stars": 0.3621034621873986,
+      "n_sigma_powerlaw": 5.874068658784804,
+      "n_sigma_logistic": 4.669254416629506,
+      "model_unc_stars": 0.9465848702924986,
+      "model_unc_powerlaw": 0.48391392734230787,
+      "model_unc_logistic": 0.4030361589769899,
+      "systematics": {
+        "D_plus": {
+          "D_Mpc": 21.6,
+          "sigma_stars": 7.377898900601715,
+          "sigma_powerlaw": 22.661617617706494,
+          "sigma_logistic": 19.64449296822141,
+          "eps_powerlaw": 1.8327022022133117,
+          "note": "M_*\u221dD\u00b2, R_e\u221dD; \u03a3 invariant; \u03c3 scales ~D^{1/2} for fixed a"
+        },
+        "D_minus": {
+          "D_Mpc": 18.400000000000002,
+          "sigma_stars": 6.80949234065947,
+          "sigma_powerlaw": 20.91572596395171,
+          "sigma_logistic": 18.13104600719492,
+          "eps_powerlaw": 1.614465745493964,
+          "note": "M_*\u221dD\u00b2, R_e\u221dD; \u03a3 invariant; \u03c3 scales ~D^{1/2} for fixed a"
+        },
+        "ML_plus": {
+          "M_star": 190000000.0,
+          "sigma_stars": 7.990095920106341,
+          "sigma_powerlaw": 23.04574862578523,
+          "sigma_logistic": 19.439007397743776,
+          "eps_powerlaw": 1.8807185782231537
+        },
+        "ML_minus": {
+          "M_star": 110000000.0,
+          "sigma_stars": 6.079551407176354,
+          "sigma_powerlaw": 20.309322881200618,
+          "sigma_logistic": 18.23804191784216,
+          "eps_powerlaw": 1.5386653601500773
+        },
+        "rotation_illustration": {
+          "V_rot_assumed_kms": 4.0,
+          "sigma_obs_corrected": 6.928203230275509,
+          "eps_powerlaw_vs_corrected": 2.147446891348124,
+          "note": "Illustrative only: assumes ordered motion ~0.5 \u03c3_obs mixed into reported dispersion. FCC 224 has published slow rotation; DF2/DF4 show little rotation in KCWI maps."
+        },
+        "tides_illustration": {
+          "sigma_obs_if_30pct_inflated": 6.153846153846153,
+          "eps_powerlaw": 2.543499654460786,
+          "note": "Illustrative: if tides inflate line-of-sight motions by ~30%, compare models to \u03c3/1.3. Not a measurement."
+        }
+      },
+      "profile_limitation": "No published radial \u03a3 profile used; mean \u03a3 within R_e from M_* and R_e.",
+      "citations": {
+        "distance": "van Dokkum et al. 2019, ApJL, 874, L5 (SBF 19.9\u00b12.8); Danieli et al. 2020 TRGB \u224820.0",
+        "M_star": "van Dokkum et al. 2019, ApJL (M/L_V=2.0\u00b10.5; L_V=(7.7\u00b10.8)\u00d710^7 L_\u2299)",
+        "R_e": "van Dokkum et al. 2019, ApJL (R_e=1.6 kpc; n=0.79)",
+        "sigma_obs": "Shen et al. 2023, ApJ, 958, 3 (arXiv:2309.08592)"
+      }
+    },
+    {
+      "name": "NGC1052-DF9",
+      "short": "DF9",
+      "D_Mpc": 20.6,
+      "D_unc_Mpc": 2.0,
+      "M_star": 140000000.0,
+      "M_star_unc": 30000000.0,
+      "R_e_kpc": 1.1,
+      "R_e_unc_kpc": 0.1,
+      "Sigma_bar_mean_msun_pc2": 18.41462151476475,
+      "sigma_obs": 6.4,
+      "sigma_obs_unc": 4.3,
+      "sigma_obs_unc_plus": 4.0,
+      "sigma_obs_unc_minus": 4.3,
+      "tracer": "stars (KCWI; broadening- and binary-corrected)",
+      "sigma_stars": 8.271853974884843,
+      "sigma_powerlaw": 21.2626920750816,
+      "sigma_logistic": 17.073561174843043,
+      "sigma_logistic_lo": 14.584639498090354,
+      "sigma_logistic_hi": 19.470228844573224,
+      "logistic_band": [
+        {
+          "Sigma_mid": 0.3,
+          "sigma_logistic": 14.584639498090354,
+          "a_ind_logistic": 524.6841494815966
+        },
+        {
+          "Sigma_mid": 1.0,
+          "sigma_logistic": 17.073561174843043,
+          "a_ind_logistic": 811.2106291246895
+        },
+        {
+          "Sigma_mid": 3.0,
+          "sigma_logistic": 19.470228844573224,
+          "a_ind_logistic": 1129.6954293753925
+        }
+      ],
+      "a_bar": 248.81297520661153,
+      "a_ind_powerlaw": 1395.1945676287985,
+      "a_ind_logistic": 811.2106291246895,
+      "m_half_star": 70000000.0,
+      "m_dyn_obs": 41903690.149294004,
+      "m_dyn_obs_unc": 56308083.63811381,
+      "m_dyn_stars": 70000000.00000001,
+      "m_dyn_powerlaw": 462518194.24978596,
+      "m_dyn_logistic": 298222599.69189644,
+      "eps_sigma_stars": 0.2924771835757567,
+      "eps_sigma_powerlaw": 2.3222956367314995,
+      "eps_sigma_logistic": 1.6677439335692252,
+      "n_sigma_stars": 0.4263531005049621,
+      "n_sigma_powerlaw": 3.4378387915880326,
+      "n_sigma_logistic": 2.4751926760722944,
+      "model_unc_stars": 0.8862700687376617,
+      "model_unc_powerlaw": 0.44791762561859755,
+      "model_unc_logistic": 0.32433300286750094,
+      "systematics": {
+        "D_plus": {
+          "D_Mpc": 22.6,
+          "sigma_stars": 8.664100244909413,
+          "sigma_powerlaw": 22.270955963981773,
+          "sigma_logistic": 17.883179031638168,
+          "eps_powerlaw": 2.4798368693721518,
+          "note": "M_*\u221dD\u00b2, R_e\u221dD; \u03a3 invariant; \u03c3 scales ~D^{1/2} for fixed a"
+        },
+        "D_minus": {
+          "D_Mpc": 18.6,
+          "sigma_stars": 7.860057462245234,
+          "sigma_powerlaw": 20.204174544134695,
+          "sigma_logistic": 16.223590542928296,
+          "eps_powerlaw": 2.156902272521046,
+          "note": "M_*\u221dD\u00b2, R_e\u221dD; \u03a3 invariant; \u03c3 scales ~D^{1/2} for fixed a"
+        },
+        "ML_plus": {
+          "M_star": 170000000.0,
+          "sigma_stars": 9.115139130240216,
+          "sigma_powerlaw": 22.31029529860964,
+          "sigma_logistic": 17.567535412119877,
+          "eps_powerlaw": 2.4859836404077558
+        },
+        "ML_minus": {
+          "M_star": 110000000.0,
+          "sigma_stars": 7.33221487682951,
+          "sigma_powerlaw": 20.05386524946572,
+          "sigma_logistic": 16.529974375562574,
+          "eps_powerlaw": 2.1334164452290185
+        },
+        "rotation_illustration": {
+          "V_rot_assumed_kms": 3.2,
+          "sigma_obs_corrected": 5.542562584220408,
+          "eps_powerlaw_vs_corrected": 2.8362565603889003,
+          "note": "Illustrative only: assumes ordered motion ~0.5 \u03c3_obs mixed into reported dispersion. FCC 224 has published slow rotation; DF2/DF4 show little rotation in KCWI maps."
+        },
+        "tides_illustration": {
+          "sigma_obs_if_30pct_inflated": 4.923076923076923,
+          "eps_powerlaw": 3.3189843277509494,
+          "note": "Illustrative: if tides inflate line-of-sight motions by ~30%, compare models to \u03c3/1.3. Not a measurement."
+        }
+      },
+      "profile_limitation": "No published \u03a3 profile; mean \u03a3 within R_e from M_* and R_e.",
+      "citations": {
+        "distance": "Keim et al. 2026, ApJ (arXiv:2603.15860); trail scale Keim et al. 2025",
+        "M_star": "Keim et al. 2026 (from Gannon et al. 2023 photometry; M/L_g=2.2)",
+        "R_e": "Keim et al. 2026; Gannon et al. 2023 (11.1'' at 20.6 Mpc \u2192 1.1 kpc)",
+        "sigma_obs": "Keim et al. 2026, ApJ (arXiv:2603.15860)"
+      }
+    },
+    {
+      "name": "FCC224",
+      "short": "FCC224",
+      "D_Mpc": 20.0,
+      "D_unc_Mpc": 1.5,
+      "M_star": 174000000.0,
+      "M_star_unc": 16000000.0,
+      "R_e_kpc": 1.89,
+      "R_e_unc_kpc": 0.05,
+      "Sigma_bar_mean_msun_pc2": 7.7525713440244655,
+      "sigma_obs": 7.82,
+      "sigma_obs_unc": 6.74,
+      "sigma_obs_unc_plus": 6.74,
+      "sigma_obs_unc_minus": 4.36,
+      "tracer": "stars (KCWI red-arm CaT; broadening-corrected)",
+      "sigma_stars": 7.035239811573533,
+      "sigma_powerlaw": 22.713106107792328,
+      "sigma_logistic": 20.11102715949632,
+      "sigma_logistic_lo": 17.04667359403665,
+      "sigma_logistic_hi": 22.295391190862166,
+      "logistic_band": [
+        {
+          "Sigma_mid": 0.3,
+          "sigma_logistic": 17.04667359403665,
+          "a_ind_logistic": 510.2528707201635
+        },
+        {
+          "Sigma_mid": 1.0,
+          "sigma_logistic": 20.11102715949632,
+          "a_ind_logistic": 751.2355856161892
+        },
+        {
+          "Sigma_mid": 3.0,
+          "sigma_logistic": 22.295391190862166,
+          "a_ind_logistic": 947.2801463433334
+        }
+      ],
+      "a_bar": 104.75047451079196,
+      "a_ind_powerlaw": 987.0700314444105,
+      "a_ind_logistic": 751.2355856161892,
+      "m_half_star": 87000000.0,
+      "m_dyn_obs": 107491703.8487204,
+      "m_dyn_obs_unc": 185292604.5883313,
+      "m_dyn_stars": 86999999.99999999,
+      "m_dyn_powerlaw": 906806240.8473041,
+      "m_dyn_logistic": 710935082.4312971,
+      "eps_sigma_stars": -0.1003529652719268,
+      "eps_sigma_powerlaw": 1.9044892720962054,
+      "eps_sigma_logistic": 1.5717426035161535,
+      "n_sigma_stars": 0.11629941274683377,
+      "n_sigma_powerlaw": 2.203368046792511,
+      "n_sigma_logistic": 1.8197540130347956,
+      "model_unc_stars": 0.32345930168154174,
+      "model_unc_powerlaw": 0.5097088581587383,
+      "model_unc_logistic": 0.43811956123611157,
+      "systematics": {
+        "D_plus": {
+          "D_Mpc": 21.5,
+          "sigma_stars": 7.294291887964547,
+          "sigma_powerlaw": 23.54944963780726,
+          "sigma_logistic": 20.851556762403817,
+          "eps_powerlaw": 2.0114385726096238,
+          "note": "M_*\u221dD\u00b2, R_e\u221dD; \u03a3 invariant; \u03c3 scales ~D^{1/2} for fixed a"
+        },
+        "D_minus": {
+          "D_Mpc": 18.5,
+          "sigma_stars": 6.766276987078863,
+          "sigma_powerlaw": 21.844765960843933,
+          "sigma_logistic": 19.34216656438075,
+          "eps_powerlaw": 1.793448332588738,
+          "note": "M_*\u221dD\u00b2, R_e\u221dD; \u03a3 invariant; \u03c3 scales ~D^{1/2} for fixed a"
+        },
+        "ML_plus": {
+          "M_star": 190000000.0,
+          "sigma_stars": 7.351586680409659,
+          "sigma_powerlaw": 23.176274282459577,
+          "sigma_logistic": 20.315909425091082,
+          "eps_powerlaw": 1.9637179389334496
+        },
+        "ML_minus": {
+          "M_star": 158000000.0,
+          "sigma_stars": 6.703981778996844,
+          "sigma_powerlaw": 22.218943284546565,
+          "sigma_logistic": 19.88859631084765,
+          "eps_powerlaw": 1.841297095210558
+        },
+        "rotation_illustration": {
+          "V_rot_assumed_kms": 3.91,
+          "sigma_obs_corrected": 6.772318657594311,
+          "eps_powerlaw_vs_corrected": 2.3538153262062487,
+          "note": "Illustrative only: assumes ordered motion ~0.5 \u03c3_obs mixed into reported dispersion. FCC 224 has published slow rotation; DF2/DF4 show little rotation in KCWI maps."
+        },
+        "tides_illustration": {
+          "sigma_obs_if_30pct_inflated": 6.015384615384615,
+          "eps_powerlaw": 2.7758360537250675,
+          "note": "Illustrative: if tides inflate line-of-sight motions by ~30%, compare models to \u03c3/1.3. Not a measurement."
+        }
+      },
+      "profile_limitation": "No published full \u03a3 profile used; mean \u03a3 within R_e from M_* and R_e. KCWI FoV covers only ~0.4 R_e,circ for population gradients.",
+      "citations": {
+        "distance": "Buzzo et al. 2025, A&A (arXiv:2502.05405); Tang et al. 2025a photometry at 20 Mpc",
+        "M_star": "Buzzo et al. 2025; Tang et al. 2025a: log(M_*/M_\u2299)=8.24\u00b10.04",
+        "R_e": "Buzzo et al. 2025; Tang et al. 2025a: R_e=1.89\u00b10.01 kpc",
+        "sigma_obs": "Buzzo et al. 2025, A&A (arXiv:2502.05405)"
+      }
+    }
+  ],
+  "residual_summary": {
+    "N": 4,
+    "stars_alone": {
+      "median_eps_sigma": -0.1064648246863547,
+      "median_abs_eps_sigma": 0.14505348432292559,
+      "mean_eps_sigma": -0.02449568758550532,
+      "n_within_1sigma": 4,
+      "n_within_2sigma": 4,
+      "n_total": 4,
+      "fraction_within_1sigma": 1.0,
+      "fraction_within_2sigma": 1.0,
+      "eps_list": [
+        -0.1775302845450686,
+        -0.11257668410078259,
+        0.2924771835757567,
+        -0.1003529652719268
+      ],
+      "n_sigma_list": [
+        0.47485146718539606,
+        0.3621034621873986,
+        0.4263531005049621,
+        0.11629941274683377
+      ]
+    },
+    "powerlaw_umm": {
+      "median_eps_sigma": 1.8407672030071922,
+      "median_abs_eps_sigma": 1.8407672030071922,
+      "mean_eps_sigma": 1.9323997519289295,
+      "n_within_1sigma": 0,
+      "n_within_2sigma": 0,
+      "n_total": 4,
+      "fraction_within_1sigma": 0.0,
+      "fraction_within_2sigma": 0.0,
+      "eps_list": [
+        1.777045133918179,
+        1.7257689649698351,
+        2.3222956367314995,
+        1.9044892720962054
+      ],
+      "n_sigma_list": [
+        4.801681695105383,
+        5.874068658784804,
+        3.4378387915880326,
+        2.203368046792511
+      ]
+    },
+    "logistic_umm": {
+      "median_eps_sigma": 1.5381840903234527,
+      "median_abs_eps_sigma": 1.5381840903234527,
+      "mean_eps_sigma": 1.5267443464340502,
+      "n_within_1sigma": 0,
+      "n_within_2sigma": 1,
+      "n_total": 4,
+      "fraction_within_1sigma": 0.0,
+      "fraction_within_2sigma": 0.25,
+      "eps_list": [
+        1.504625577130752,
+        1.362865271520071,
+        1.6677439335692252,
+        1.5717426035161535
+      ],
+      "n_sigma_list": [
+        4.078684420138082,
+        4.669254416629506,
+        2.4751926760722944,
+        1.8197540130347956
+      ]
+    },
+    "classification": "ruled out",
+    "classification_note": "For every system in this small sample, the frozen intermediate-regime UMM power-law predicts a line-of-sight dispersion more than 2\u03c3 above the observed value (model systematically high). The pure-baryon column is consistent with the data within uncertainties. This is an illustrative first estimate on a small sample; systematics remain significant, but the direction of the residual is uniform.",
+    "honesty": "Illustrative first estimate; small sample (N=4); systematics remain significant (distance, M/L, residual rotation, possible tides, mean-\u03a3 proxy for local \u03a3_bar, thin-disk specialization applied to pressure-supported systems)."
+  }
+}

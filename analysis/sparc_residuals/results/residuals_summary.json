@@ -1,0 +1,28 @@
+{
+  "N_gal": 88,
+  "med_epsilon_umm": 0.09790213666769723,
+  "med_epsilon_baryon": 0.5068130895827677,
+  "med_epsilon_nfw": 0.01182659338111084,
+  "frac_eps_lt_0.25": 0.8522727272727273,
+  "A_global": 1.4125375446228536e-11,
+  "A_err": 7.062687723114268e-13,
+  "A_unit": "m s^-2",
+  "chi2_min_outer": 31677.23223564155,
+  "selection_id": "ea6c92761ffd3c5a",
+  "upsilon_disk": 0.5,
+  "upsilon_bulge": 0.7,
+  "n_g": 0.4,
+  "A_global_ng045_sensitivity": 1.3489628825917498e-11,
+  "coverage_widened_to_2.0": false,
+  "cut_tallies": {
+    "n_total": 175,
+    "n_pass": 88,
+    "fail_Q": 76,
+    "fail_incl": 12,
+    "fail_NR": 32,
+    "fail_coverage": 14,
+    "fail_meta": 0
+  },
+  "tag": "fiducial",
+  "timestamp_utc": "2026-08-08T04:01:07.878276+00:00"
+}

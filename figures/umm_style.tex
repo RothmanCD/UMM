@@ -1,0 +1,37 @@
+% Shared UMM figure style (journal-consistent palette + line weights)
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta,calc,positioning,decorations.pathmorphing,patterns,shapes.geometric,fit,backgrounds}
+% Palette: grayscale + single accent (deep teal)
+\definecolor{ummAccent}{HTML}{0B6E6E}
+\definecolor{ummAccentLight}{HTML}{4A9B9B}
+\definecolor{ummDark}{HTML}{1A1A1A}
+\definecolor{ummGray}{HTML}{555555}
+\definecolor{ummLightGray}{HTML}{AAAAAA}
+\definecolor{ummFill}{HTML}{E8F2F2}
+\definecolor{ummGas}{HTML}{C45C26}
+\definecolor{ummGasLight}{HTML}{F0C4A8}
+\definecolor{ummGalaxy}{HTML}{2C3E50}
+\definecolor{ummLens}{HTML}{0B6E6E}
+\pgfplotsset{
+  umm axis/.style={
+    axis lines=left,
+    axis line style={ummDark, line width=0.8pt},
+    tick style={ummDark, line width=0.6pt},
+    tick label style={font=\footnotesize, ummDark},
+    label style={font=\small, ummDark},
+    title style={font=\small\bfseries, ummDark},
+    grid=both,
+    major grid style={ummLightGray, opacity=0.35, line width=0.3pt},
+    minor grid style={ummLightGray, opacity=0.15, line width=0.2pt},
+    every axis plot/.append style={line width=1.3pt},
+    legend style={font=\footnotesize, draw=ummLightGray, fill=white, fill opacity=0.92, text opacity=1},
+    clip=false,
+  },
+}
+\newcommand{\ummLineW}{1.25pt}
+\newcommand{\ummLineWthin}{0.9pt}
+\tikzset{
+  umm arr/.style={-{Latex[length=2.2mm,width=1.6mm]}},
+}
